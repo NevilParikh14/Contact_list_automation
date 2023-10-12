@@ -27,7 +27,7 @@ class Base:
         return response.status_code, response_json
 
     # Function to login and get API token
-    def get_token(self, body):
+    def get_token(self, body = {"email": creds_file['users']['email'], "password": creds_file['users']['password']}):
         endpoint = "users/login"
         method = "POST"
         header = {'Content-Type': 'application/json'}
@@ -39,13 +39,13 @@ class Base:
             self.token = ""
 
     # Function to create user
-    def create_user(self):
+    def create_user(self, body = creds_file['users']):
 
         endpoint = "users"
         method = "POST"
         header = {'Content-Type': 'application/json'}
         response_code, response = self.request(
-            endpoint, method, header, self.creds_file['users'])
+            endpoint, method, header, body)
         return response_code, response
     
     # Function to get user
@@ -88,7 +88,7 @@ class Base:
     # Function to delete user
     def delete_user(self):
 
-        self.get_token({"email": self.creds_file['users']['email'], "password": self.creds_file['users']['password']})
+        self.get_token()
         endpoint = "users/me"
         method = "DELETE"
         header = {'Authorization': 'Bearer ' + self.token}

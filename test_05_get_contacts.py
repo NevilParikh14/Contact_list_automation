@@ -8,8 +8,7 @@ class TestFetchContacts(Base):
         # Get Bearer token
         if not self.token:
             self.create_user()
-            self.get_token(
-                {"email": self.creds_file['users']['email'], "password": self.creds_file['users']['password']})
+            self.get_token()
             assert self.token
             self.delete_contacts()
             for i in range(len(self.creds_file['contacts'])):

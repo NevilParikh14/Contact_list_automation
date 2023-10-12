@@ -7,8 +7,7 @@ class TestDeleteContact(Base):
 
         if not self.token:
             self.create_user()
-            self.get_token(
-                {"email": self.creds_file['users']['email'], "password": self.creds_file['users']['password']})
+            self.get_token()
             assert self.token
 
             self.create_contact(self.creds_file['contacts'][0])

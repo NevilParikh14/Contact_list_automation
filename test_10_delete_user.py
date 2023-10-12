@@ -7,8 +7,7 @@ class TestDeleteUser(Base):
         # Get Bearer Token
         if not self.token:
             self.create_user()
-            self.get_token(
-                {"email": self.creds_file['users']['email'], "password": self.creds_file['users']['password']})
+            self.get_token()
             assert self.token
 
         # Call to delete the user
@@ -26,6 +25,5 @@ class TestDeleteUser(Base):
         self.token = ""
 
         # Veirfy that deleted user is not able to login
-        self.get_token(
-            {"email": self.creds_file['users']['email'], "password": self.creds_file['users']['password']})
+        self.get_token()
         assert not self.token
