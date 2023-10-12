@@ -82,7 +82,7 @@ class Base:
         method = "GET"
         header = {'Authorization': 'Bearer ' + self.token}
         response_code, response = self.request(endpoint, method, header, {})
-        if response_code not in [200, 201]:
+        if response_code != 200:
             raise (f"Not able to update the user details: {response}")
 
     # Function to delete user

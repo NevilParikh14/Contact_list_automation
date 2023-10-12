@@ -17,7 +17,7 @@ class TestPutContact(Base):
         response_code, response = self.get_contacts()
 
         # Verify that contact id is receieved
-        assert response_code in [200, 201]
+        assert response_code == 200
 
         contact_id = response[0]['_id']
         
@@ -31,7 +31,7 @@ class TestPutContact(Base):
         response_code, response = self.update_contact("PUT", contact_id, self.creds_file['Update_contact'])
 
         # Veirfy that API call was successful
-        assert response_code in [200, 201]
+        assert response_code == 200
 
         # Verify that correct record was updated
         assert response["_id"] == contact_id
@@ -40,7 +40,7 @@ class TestPutContact(Base):
         response_code, response = self.get_contact(contact_id)
 
         # Verify that api call was successful
-        assert response_code in [200, 201]
+        assert response_code == 200
 
         # Verify that correct contact was retrived
         assert response["_id"] == contact_id

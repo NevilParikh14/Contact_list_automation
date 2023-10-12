@@ -18,7 +18,7 @@ class TestFetchContacts(Base):
         response_code, response = self.get_contacts()
 
         # Verify that contact list was retrived
-        assert response_code in [200, 201]
+        assert response_code == 200
 
         # Verify that contact list count is same as it was created
         assert len(response) == len(self.creds_file['contacts'])
@@ -33,7 +33,7 @@ class TestFetchContacts(Base):
             response_code, response = self.get_contact(id)
 
             # Verify that call was successful
-            assert response_code in [200, 201]
+            assert response_code == 200
 
             # Verify that received contact id that was passed during API call
             assert response["_id"] == id

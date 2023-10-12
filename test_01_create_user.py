@@ -16,6 +16,9 @@ class TestCreateUser(Base):
         # Veirfy that the user was created
         assert response['user']
 
+        # Verify that password is not present in reponse
+        assert 'password' not in response['user']
+
         # Verify that a token is received that can be used for performing other actions
         assert response['token']
     

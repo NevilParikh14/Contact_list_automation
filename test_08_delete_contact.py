@@ -16,7 +16,7 @@ class TestDeleteContact(Base):
         response_code, response = self.get_contacts()
 
         # Verify that contact id is receieved
-        assert response_code in [200, 201]
+        assert response_code == 200
 
         contact_id = response[0]['_id']
 
@@ -24,7 +24,7 @@ class TestDeleteContact(Base):
         response_code, response = self.delete_contact(contact_id)
 
         # Verify that API call was successful
-        assert response_code in [200, 201]
+        assert response_code == 200
 
         # Call to get contact
         response_code, response = self.get_contact(contact_id)

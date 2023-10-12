@@ -16,7 +16,7 @@ class TestPatchContact(Base):
         response_code, response = self.get_contacts()
 
         # Verify that contact id is receieved
-        assert response_code in [200, 201]
+        assert response_code == 200
 
         contact_id = response[0]['_id']
 
@@ -24,7 +24,7 @@ class TestPatchContact(Base):
         response_code, response = self.update_contact("PATCH", contact_id)
 
         # Verify that API call was successful
-        assert response_code in [200, 201]
+        assert response_code == 200
 
         # Verify that the correct contact was updated
         assert response["_id"] == contact_id
@@ -33,7 +33,7 @@ class TestPatchContact(Base):
         response_code, response = self.get_contact(contact_id)
 
         # Verify that API call was successful
-        assert response_code in [200, 201]
+        assert response_code == 200
 
         # Verify that the correct contact details are receieved
         assert response["_id"] == contact_id

@@ -17,7 +17,7 @@ class TestCreateContact(Base):
                 self.creds_file['contacts'][i])
 
             # Verify that contact was created
-            assert response_code in [200, 201]
+            assert response_code == 201
 
             # Verify that contact id is retrived in the respnse
             assert response['_id']
@@ -27,4 +27,4 @@ class TestCreateContact(Base):
             self.creds_file['contacts'][0]["firstName"])
 
         # Verify that contact was not created and received an error
-        assert response_code not in [200, 201]
+        assert response_code != 201
